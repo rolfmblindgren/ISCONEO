@@ -69,37 +69,35 @@ server <- function(input, output) {
 
     
     if ( length(getwd()) == 0 ) {
-        homedir <- "/srv/shiny-server/STYRK"
+        homedir <- "/srv/shiny-server/STYRK/"
     } else { 
         homedir <- paste0(getwd(),"/")
     }
 
     ISCONEO <- read_delim(paste0(homedir,"share_isco_big5_ratings.csv"),
-                         "\t", escape_double = FALSE,
-                         col_types = cols(profession = col_character()), 
-                         trim_ws = TRUE)
+                          "\t", escape_double = FALSE,
+                          col_types = cols(profession = col_character()), 
+                          trim_ws = TRUE)
    
-   STYRK <- read_delim(paste0(homedir,"STYRK-08.csv"),
-                       ";", escape_double = FALSE,
-                       col_types = cols(
-                         code = col_integer(),
-                         parentCode = col_character(),
-                         level = col_integer(),
-                         name = col_character(),
-                         shortName = col_character(),
-                         notes = col_character(),
-                         validFrom = col_character(),
-                         validTo = col_character()),
-                       trim_ws = TRUE)
-   
+    STYRK <- read_delim(paste0(homedir,"STYRK-08.csv"),
+                        ";", escape_double = FALSE,
+                        col_types = cols(
+                            code = col_integer(),
+                            parentCode = col_character(),
+                            level = col_integer(),
+                            name = col_character(),
+                            shortName = col_character(),
+                            notes = col_character(),
+                            validFrom = col_character(),
+                            validTo = col_character()),
+                        trim_ws = TRUE)
+    
     ISCO <- read_excel(paste0(homedir,"index08-draft.xlsx"),
                        col_types = c("numeric", "numeric", "text"))
-   
-   descriptives <- describe(ISCONEO
-                            [c("job_ext","job_agr","job_con","job_sta","job_ope")])
+    
+    descriptives <- describe(ISCONEO
+                             [c("job_ext","job_agr","job_con","job_sta","job_ope")])
 
-    
-    
   output$result <- DT::renderDataTable({
     
     I <- input$I
@@ -127,7 +125,7 @@ server <- function(input, output) {
      mV <- 4.53
     sdV <- 1.16
 
-   SCONEO[["job_ext"]] <- (ISCONEO[["job_ext"]] - mI)/sdI * 10 + 50
+   ISCONEO[["job_ext"]] <- (ISCONEO[["job_ext"]] - mI)/sdI * 10 + 50
    ISCONEO[["job_agr"]] <- (ISCONEO[["job_agr"]] - mII)/sdII * 10 + 50
    ISCONEO[["job_con"]] <- (ISCONEO[["job_con"]] - mIII)/sdIII * 10 + 50
    ISCONEO[["job_sta"]] <- (ISCONEO[["job_sta"]] - mIV)/sdIV * 10 + 50
