@@ -69,7 +69,7 @@ server <- function(input, output) {
 
     
     if ( length(getwd()) == 0 ) {
-        homedir <- "/srv/shiny-server/STYRK"
+        homedir <- "/srv/shiny-server/STYRK/"
     } else { 
         homedir <- paste0(getwd(),"/")
     }
