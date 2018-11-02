@@ -68,7 +68,7 @@ server <- function(input, output) {
     library(DT)
 
     
-    if ( getwd() == "" ) {
+    if ( length(getwd()) == 0 ) {
         homedir <- "/srv/shiny-server/STYRK"
     } else { 
         homedir <- paste0(getwd(),"/")
