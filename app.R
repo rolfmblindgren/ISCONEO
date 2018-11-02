@@ -109,22 +109,22 @@ server <- function(input, output) {
     
    
    
-   sdI <- descriptives["job_ext","sd"]
-   mI <- descriptives["job_ext","mean"]
-   
-   sdII <- descriptives["job_agr","sd"]
-   mII <- descriptives["job_agr","mean"]
-   
-   sdIII <- descriptives["job_con","sd"]
-   mIII <- descriptives["job_con","mean"]
-   
-   sdIV <- descriptives["job_sta","sd"]
-   mIV <- descriptives["job_sta","mean"]
-   
-   sdV <- descriptives["job_ope","sd"]
-   mV <- descriptives["job_ope","mean"]
-   
-   ISCONEO[["job_ext"]] <- (ISCONEO[["job_ext"]] - mI)/sdI * 10 + 50
+     mI <- 4.86
+    sdI <- 1.13
+               
+    mII <- 5.33
+   sdII <- 0.98
+               
+   mIII <- 6.01
+  sdIII <- 0.84
+               
+    mIV <- 4.33
+   sdIV <- 1.18
+               
+     mV <- 4.53
+    sdV <- 1.16
+
+   SCONEO[["job_ext"]] <- (ISCONEO[["job_ext"]] - mI)/sdI * 10 + 50
    ISCONEO[["job_agr"]] <- (ISCONEO[["job_agr"]] - mII)/sdII * 10 + 50
    ISCONEO[["job_con"]] <- (ISCONEO[["job_con"]] - mIII)/sdIII * 10 + 50
    ISCONEO[["job_sta"]] <- (ISCONEO[["job_sta"]] - mIV)/sdIV * 10 + 50
