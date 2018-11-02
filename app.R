@@ -68,9 +68,12 @@ server <- function(input, output) {
     library(DT)
 
     
-    
-    homedir <- paste0(getwd(),"/")
-    
+    if ( getwd() == "" ) {
+        homedir <- "/srv/shiny-server/STYRK"
+    } else { 
+        homedir <- paste0(getwd(),"/")
+    }
+
     ISCONEO <- read_delim(paste0(homedir,"share_isco_big5_ratings.csv"),
                          "\t", escape_double = FALSE,
                          col_types = cols(profession = col_character()), 
