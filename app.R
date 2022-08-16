@@ -173,7 +173,7 @@ server <- function(input, output) {
 
       yrker[,1] <- format(
         100 - as.numeric(yrker[,1])/as.numeric(yrker[176,1])*100,
-        digits=0,
+        digits=2,
         width=3
       )
       
